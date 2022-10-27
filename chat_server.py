@@ -83,11 +83,11 @@ def accept_func():
 
 if __name__ == '__main__':
     # 1.
-    res = requests.get('http://127.0.0.1:5000/game/port/').json()
+    res = requests.get('http://43.201.142.6:5000/game/port/').json()
     for school_code in res['school_codes']:
         ports[school_code] = get_open_port()
     print(ports)
-    requests.post('http://127.0.0.1:5000/game/port/', json=ports)
+    requests.post('http://43.201.142.6:5000/game/port/', json=ports)
     # 2.
     for i in ports.values():
         rooms[str(i)] = {}
