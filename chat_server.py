@@ -2,8 +2,8 @@ import socket
 import threading
 import requests
 
-# host = 'localhost'
-host = '3.34.210.37'
+host ="0.0.0.0"
+# host = '3.34.210.37'
 ports = {}
 rooms = {}
 
@@ -24,6 +24,7 @@ def main(i):
     # ip주소와 port번호를 함께 socket에 바인드 한다.
     # 포트의 범위는 1-65535 사이의 숫자를 사용할 수 있다.
     server_socket.bind((host, i))
+    print('소켓열림 ' + str(i))
 
     # 서버가 최대 5개의 클라이언트의 접속을 허용한다.
     server_socket.listen(5)
