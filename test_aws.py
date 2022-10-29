@@ -19,7 +19,7 @@ def handle_receive(client_socket, user):
 
 def handle_send(client_socket):
     while 1:
-        data = input()
+        data = "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa"
         client_socket.send(data.encode('utf-8'))
         if data == "/종료":
             break

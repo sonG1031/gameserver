@@ -70,7 +70,7 @@ def handle_receive(client_socket, user, i):
             del rooms[str(i)][user]
             msg_func(msg, i)
             break
-        string = "%s : %s"%(user, string)
+        string = "%s : %s"%(user, string) # "user : dkdkasdkf"
         msg_func(string, i)
     client_socket.close()
 

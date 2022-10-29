@@ -54,7 +54,7 @@ def msg_func(msg, i):
         try:
             con.send(msg.encode('utf-8'))
         except:
-            print("연결이 비 정상적으로 종료된 소켓 발견")
+            con.close()
 
 
 def handle_receive(client_socket, user, i):
