@@ -48,13 +48,17 @@ def main(i):
         receive_thread.start()
 
 
-def msg_func(msg, i):
+def msg_func(msg, user, i):
     print(msg)
     for con in rooms[str(i)].values():
         try:
             if msg.split(':')[1] != "":
                 con.send(msg.encode('utf-8'))
+            else:
+                del rooms[str(i)][user]
+                con.close()
         except:
+            del rooms[str(i)][user]
             con.close()
 
 
@@ -78,7 +82,7 @@ def handle_receive(client_socket, user, i):
             # msg_func(msg, i)
             break
         string = "%s : %s"%(user, string)
-        msg_func(string, i)
+        msg_func(string, user, i)
     client_socket.close()
 
 
