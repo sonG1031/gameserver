@@ -49,17 +49,11 @@ def main(i):
         receive_thread.start()
 
 
-def msg_func(msg, user, i):
+def msg_func(msg, i):
     print(msg)
     print(rooms[str(i)].keys())
-    # test = '{' + msg.split('{')[1]
     for con in rooms[str(i)].values():
         try:
-            # if test != "":
-            #     con.send(msg.encode('utf-8'))
-            # else:
-            #     del rooms[str(i)][user]
-            #     break
             con.send(msg.encode('utf-8'))
         except:
             con.close()
@@ -80,11 +74,11 @@ def handle_receive(client_socket, user, i):
         #     continue
         data = client_socket.recv(1024)
         string = data.decode('utf-8')
-        if string == "" or string == "/종료":
+        if string == "" or "/종료" in string:
             #유저 목록에서 방금 종료한 유저의 정보를 삭제
             del rooms[str(i)][user]
             print(rooms[str(i)].keys())
-            time.sleep(100)
+            msg_func(user, i)
 
             break
         string = "%s : %s"%(user, string)
