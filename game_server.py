@@ -50,6 +50,7 @@ def main(i):
 
 def msg_func(msg, user, i):
     print(msg)
+    print(msg.split(':')[1])
     for con in rooms[str(i)].values():
         try:
             if msg.split(':')[1] != "":
@@ -77,10 +78,8 @@ def handle_receive(client_socket, user, i):
         data = client_socket.recv(1024)
         string = data.decode('utf-8')
         if string == "":
-            # msg = "---- %s님이 나가셨습니다. ----"%user
             #유저 목록에서 방금 종료한 유저의 정보를 삭제
             del rooms[str(i)][user]
-            # msg_func(msg, i)
             break
         string = "%s : %s"%(user, string)
         msg_func(string, user, i)
