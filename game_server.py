@@ -50,14 +50,15 @@ def main(i):
 
 def msg_func(msg, user, i):
     print(msg)
-    test = '{' + msg.split('{')[1]
+    # test = '{' + msg.split('{')[1]
     for con in rooms[str(i)].values():
         try:
-            if test != "":
-                con.send(msg.encode('utf-8'))
-            else:
-                del rooms[str(i)][user]
-                break
+            # if test != "":
+            #     con.send(msg.encode('utf-8'))
+            # else:
+            #     del rooms[str(i)][user]
+            #     break
+            con.send(msg.encode('utf-8'))
         except:
             con.close()
 
