@@ -81,6 +81,7 @@ def handle_receive(client_socket, user, i):
         if string == "" or string == "/종료":
             #유저 목록에서 방금 종료한 유저의 정보를 삭제
             del rooms[str(i)][user]
+            print(rooms[str(i)].keys())
             break
         string = "%s : %s"%(user, string)
         msg_func(string, user, i)
