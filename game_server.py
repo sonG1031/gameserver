@@ -52,7 +52,8 @@ def msg_func(msg, i):
     print(msg)
     for con in rooms[str(i)].values():
         try:
-            con.send(msg.encode('utf-8'))
+            if msg.split(':')[1] != "":
+                con.send(msg.encode('utf-8'))
         except:
             con.close()
 
