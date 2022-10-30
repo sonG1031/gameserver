@@ -56,10 +56,11 @@ def msg_func(msg, user, i):
                 con.send(msg.encode('utf-8'))
             else:
                 del rooms[str(i)][user]
-                con.close()
+                break
         except:
-            del rooms[str(i)][user]
             con.close()
+
+
 
 
 def handle_receive(client_socket, user, i):
