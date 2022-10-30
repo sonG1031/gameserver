@@ -51,6 +51,7 @@ def main(i):
 
 def msg_func(msg, user, i):
     print(msg)
+    print(rooms[str(i)].keys())
     # test = '{' + msg.split('{')[1]
     for con in rooms[str(i)].values():
         try:
