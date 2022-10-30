@@ -78,7 +78,7 @@ def handle_receive(client_socket, user, i):
         #     continue
         data = client_socket.recv(1024)
         string = data.decode('utf-8')
-        if string == "":
+        if string == "" or string == "/종료":
             #유저 목록에서 방금 종료한 유저의 정보를 삭제
             del rooms[str(i)][user]
             break
