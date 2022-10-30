@@ -82,7 +82,7 @@ def handle_receive(client_socket, user, i):
 
             break
         string = "%s : %s"%(user, string)
-        msg_func(string, user, i)
+        msg_func(string, i)
     client_socket.close()
 
 
