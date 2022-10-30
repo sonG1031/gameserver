@@ -83,7 +83,7 @@ def handle_receive(client_socket, user, i):
             #유저 목록에서 방금 종료한 유저의 정보를 삭제
             del rooms[str(i)][user]
             print(rooms[str(i)].keys())
-            time.sleep(10)
+            time.sleep(100)
 
             break
         string = "%s : %s"%(user, string)
