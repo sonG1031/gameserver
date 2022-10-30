@@ -27,7 +27,7 @@ def main(i):
     print('소켓열림 ' + str(i))
 
     # 서버가 최대 5개의 클라이언트의 접속을 허용한다.
-    server_socket.listen(5)
+    server_socket.listen(2)
 
     while 1:
         try:
