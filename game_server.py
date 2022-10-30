@@ -65,8 +65,9 @@ def handle_receive(client_socket, user, i):
             data = client_socket.recv(1024)
             string = data.decode('utf-8')
         except:
-            del rooms[str(i)][user]
-            break
+            # del rooms[str(i)][user]
+            # break
+            continue
 
         if "" in string:
             # msg = "---- %s님이 나가셨습니다. ----"%user
