@@ -61,10 +61,14 @@ def handle_receive(client_socket, user, i):
     # msg = "---- %s님이 들어오셨습니다. ----"%user
     # msg_func(msg, i)
     while 1:
-        data = client_socket.recv(1024)
-        string = data.decode('utf-8')
+        try:
+            data = client_socket.recv(1024)
+            string = data.decode('utf-8')
+        except:
+            del rooms[str(i)][user]
+            break
 
-        if "/종료" in string:
+        if "" in string:
             # msg = "---- %s님이 나가셨습니다. ----"%user
             #유저 목록에서 방금 종료한 유저의 정보를 삭제
             del rooms[str(i)][user]
