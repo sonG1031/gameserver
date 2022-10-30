@@ -69,7 +69,7 @@ def handle_receive(client_socket, user, i):
             # break
             continue
 
-        if "" in string:
+        if "/종료" in string:
             # msg = "---- %s님이 나가셨습니다. ----"%user
             #유저 목록에서 방금 종료한 유저의 정보를 삭제
             del rooms[str(i)][user]
