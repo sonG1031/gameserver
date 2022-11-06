@@ -1,9 +1,11 @@
 import socket
 import threading
 import requests
+import time
 
-host ="0.0.0.0"
+# host = 'localhost'
 # host = '3.34.210.37'
+host ="0.0.0.0"
 ports = {}
 rooms = {}
 
@@ -49,28 +51,38 @@ def main(i):
 
 def msg_func(msg, i):
     print(msg)
+    print(rooms[str(i)].keys())
     for con in rooms[str(i)].values():
         try:
             con.send(msg.encode('utf-8'))
         except:
-            print("연결이 비 정상적으로 종료된 소켓 발견")
+            con.close()
+
+
 
 
 def handle_receive(client_socket, user, i):
-    msg = "---- %s님이 들어오셨습니다. ----"%user
-    msg_func(msg, i)
+    # msg = "---- %s님이 들어오셨습니다. ----"%user
+    # msg_func(msg, i)
     while 1:
+        # try:
+        #     data = client_socket.recv(1024)
+        #     string = data.decode('utf-8')
+        # except:
+        #     # del rooms[str(i)][user]
+        #     # break
+        #     continue
         data = client_socket.recv(1024)
         string = data.decode('utf-8')
-
-        if "/종료" in string:
-            msg = "---- %s님이 나가셨습니다. ----"%user
-            print(rooms[str(i)][user])
+        if string == "" or "/END" in string:
             #유저 목록에서 방금 종료한 유저의 정보를 삭제
             del rooms[str(i)][user]
-            msg_func(msg, i)
+            print(rooms[str(i)].keys())
+            string = "exit:%s" % user
+            msg_func(string, i)
+
             break
-        string = "%s : %s"%(user, string) # "user : dkdkasdkf"
+        # string = "%s : %s"%(user, string)
         msg_func(string, i)
     client_socket.close()
 
