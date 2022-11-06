@@ -72,14 +72,15 @@ def handle_receive(client_socket, user, i):
         #     # del rooms[str(i)][user]
         #     # break
         #     continue
-        try:
-            data = client_socket.recv(1024)
-        except ConnectionResetError:
-            del rooms[str(i)][user]
-            print(rooms[str(i)].keys())
-            string = "exit:%s" % user
-            msg_func(string, i)
-            break
+        # try:
+        #     data = client_socket.recv(1024)
+        # except ConnectionResetError:
+        #     del rooms[str(i)][user]
+        #     print(rooms[str(i)].keys())
+        #     string = "exit:%s" % user
+        #     msg_func(string, i)
+        #     break
+        data = client_socket.recv(1024)
         string = data.decode('utf-8')
         if string == "" or "/END" in string:
             #유저 목록에서 방금 종료한 유저의 정보를 삭제
