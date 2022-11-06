@@ -102,6 +102,7 @@ if __name__ == '__main__':
     ports['type'] = "move"
     print(ports)
     requests.post('http://43.201.142.6:5000/game/port/', json=ports)
+    del ports['type']
     # 2.
     for i in ports.values():
         rooms[str(i)] = {}
