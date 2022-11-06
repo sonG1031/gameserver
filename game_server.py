@@ -99,6 +99,7 @@ if __name__ == '__main__':
     res = requests.get('http://43.201.142.6:5000/game/port/').json()
     for school_code in res['school_codes']:
         ports[school_code] = get_open_port()
+    ports['type'] = "move"
     print(ports)
     requests.post('http://43.201.142.6:5000/game/port/', json=ports)
     # 2.
